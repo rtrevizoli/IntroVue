@@ -1,17 +1,37 @@
 <!DOCTYPE HTML>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="./css/style.css" media="screen" />
         <title>The Vue Instance</title>
     </head>
     <body>
+        <div class="nav-bar"></div>
 
         <div id="app">
-            <spam v-bind:title="message">
-                <h1>{{ product }}</h1>
-            </spam>
+            <div class="product">
+
+                <div class="product-image">
+                    <a :href="url" ><img :src="image" :alt="altText" /></a>
+                </div>
+
+                <div class="product-info">
+                    <spam :title="message">
+                        <h1>{{ product }}</h1>
+                    </spam>
+
+                    <p v-if="inventory > 10">In Stock</p>
+                    <p v-else-if="inventory <= 10 && inventory > 0">Almomst sold out !</p>
+                    <p v-else>Out of Stock</p>
+
+                    <spam v-show="onSale">
+                        <h3>On sale !</h3>
+                    </spam>
+                </div>
+
+            </div>
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-        <script src="js/main.js"></script>
+        <script src="./js/main.js"></script>
     </body>
 </html>
